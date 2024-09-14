@@ -1,1 +1,25 @@
- 
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="arm" params="parent">
+        <!-- 机械臂基座链接 -->
+        <link name="arm_base_link">
+            <visual>
+                <geometry>
+                    <cylinder length="0.1" radius="0.05" />
+                </geometry>
+                <material name="blue">
+                    <color rgba="0 0 0.8 1" />
+                </material>
+            </visual>
+        </link>
+
+        <!-- 将机械臂基座连接到父链接 -->
+        <joint name="${parent}_to_arm_base" type="fixed">
+            <parent link="${parent}" />
+            <child link="arm_base_link" />
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+        </joint>
+
+        <!-- 在这里可以添加更多的机械臂部件 -->
+    </xacro:macro>
+</robot>

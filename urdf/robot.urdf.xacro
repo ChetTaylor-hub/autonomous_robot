@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="autonomous_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find autonomous_robot)/urdf/base.xacro" />
+    <xacro:include filename="$(find autonomous_robot)/urdf/camera.xacro" />
+    <xacro:include filename="$(find autonomous_robot)/urdf/arm.xacro" />
+
+    <xacro:base_robot />
+    <xacro:camera_sensor parent="base_link" />
+    <xacro:arm parent="base_link" />
+</robot>

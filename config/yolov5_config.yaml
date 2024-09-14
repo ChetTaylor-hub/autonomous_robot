@@ -1,0 +1,11 @@
+model:
+  name: 'yolov5s'
+  confidence_threshold: 0.5
+  nms_threshold: 0.4
+
+classes:
+  - apple
+  - banana
+  - orange
+  - bottle
+  - cup

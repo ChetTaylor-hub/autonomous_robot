@@ -1,0 +1,26 @@
+<launch>
+    <!-- 启动Gazebo仿真环境 -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find autonomous_robot)/worlds/room.world" />
+    </include>
+
+    <!-- 加载机器人模型 -->
+    <param name="robot_description"
+        command="$(find xacro)/xacro --inorder '$(find autonomous_robot)/urdf/robot.urdf.xacro'" />
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+        args="-param robot_description -urdf -model robot" />
+
+    <!-- 启动SLAM -->
+    <include file="$(find gmapping)/launch/slam_gmapping.launch" />
+
+    <!-- 启动导航 -->
+    <include file="$(find move_base)/launch/move_base.launch" />
+
+    <!-- 启动我们的控制器 -->
+    <node name="slam_controller" pkg="autonomous_robot" type="slam_controller.py" output="screen" />
+    <node name="object_detection" pkg="autonomous_robot" type="object_detection.py" output="screen" />
+    <node name="navigation_controller" pkg="autonomous_robot" type="navigation_controller.py"
+        output="screen" />
+    <node name="arm_controller" pkg="autonomous_robot" type="arm_controller.py" output="screen" />
+    <node name="main_controller" pkg="autonomous_robot" type="main_controller.py" output="screen" />
+</launch>

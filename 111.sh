@@ -5,8 +5,11 @@ WORKSPACE_NAME="autonomous_robot_ws"
 
 # 创建工作空间和src目录
 mkdir -p ~/$WORKSPACE_NAME/src
-cd ~/$WORKSPACE_NAME/src
+# 编译工作空间
+cd ~/$WORKSPACE_NAME
+catkin_make
 
+cd ~/$WORKSPACE_NAME/src
 # 克隆项目仓库（假设您的项目在GitHub上）
 git clone https://github.com/ChetTaylor-hub/autonomous_robot
 
@@ -16,10 +19,6 @@ sudo apt-get install -y ros-noetic-gmapping ros-noetic-move-base ros-noetic-urdf
 
 # 安装Python依赖
 pip3 install torch torchvision torchaudio
-
-# 编译工作空间
-cd ~/$WORKSPACE_NAME
-catkin_make
 
 # 设置环境变量
 echo "source ~/$WORKSPACE_NAME/devel/setup.bash" >> ~/.bashrc

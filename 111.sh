@@ -8,7 +8,7 @@ mkdir -p ~/$WORKSPACE_NAME/src
 cd ~/$WORKSPACE_NAME/src
 
 # 克隆项目仓库（假设您的项目在GitHub上）
-git clone https://github.com/ChetTaylor-hub/ros_nav_2.git
+git clone https://github.com/ChetTaylor-hub/autonomous_robot
 
 # 安装依赖项
 sudo apt-get update
